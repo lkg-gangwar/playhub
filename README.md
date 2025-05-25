@@ -1,6 +1,157 @@
-# Games
 
-Created using Flask and VanillaJS. Includes Tic-Tac-Toe, Hangman, Rock Paper Scissors, and two types of guessing games. In one, you guess a randomly-generated number by the computer while in the other, the computer guesses your number using a binary search algorithm!
+# 🎮 Play Hub
+
+A collection of classic browser games built using **Flask** (backend) and **VanillaJS** (frontend). Includes:
+
+* **Tic-Tac-Toe**
+* **Hangman**
+* **Rock Paper Scissors**
+* **Two Guessing Games**:
+
+  * You guess the computer's number.
+  * The computer guesses your number using binary search.
+
+---
+
+## 🚀 Installation (Without Docker)
+
+1. Install dependencies using `pip`:
+
+   ```bash
+   pip install flask
+   ```
+
+2. Create a `.env` file in the root directory:
+
+   ```
+   DOMAIN=your_local_ip_address
+   PORT=port_number_you_prefer
+   ```
+
+3. Navigate to the app directory and run:
+
+   ```bash
+   cd games/src
+   python app.py
+   ```
+
+---
+
+## 🐳 Docker Setup (Recommended)
+
+### 🔧 Dockerfile
+
+Ensure your `Dockerfile` looks like this:
+
+```dockerfile
+FROM python:3.9
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "api/index.py"]
+```
+
+### 📄 requirements.txt
+
+Ensure `flask` and other required packages are listed:
+
+```
+flask
+python-dotenv
+```
+
+### 📦 Build and Run the Docker Container
+
+1. Build the Docker image:
+
+   ```bash
+   docker build -t playhub:v1 .
+   ```
+
+2. Run the container:
+
+   ```bash
+   docker run -p 5000:5000 playhub:v1
+   ```
+
+3. Open your browser and visit:
+
+   ```
+   http://localhost:5000
+   ```
+
+> 🔁 Make sure your Flask app uses `host="0.0.0.0"` and `port=5000` in the `app.run()` call:
+
+```python
+app.run(host="0.0.0.0", port=5000)
+```
+
+---
+
+## 🕹️ How to Play
+
+### 1. **Tic Tac Toe**
+
+* Player 1 is "X", Player 2 is "O".
+* Alternate turns by clicking squares.
+* Use `Restart` to replay, `Reset Score` to clear score.
+
+---
+
+### 2. **Hangman**
+
+* Select difficulty using the dropdown in the nav.
+  ![Switch Difficulty](./assets/switch_difficulty_hangman.png)
+* Use:
+
+  * `Get new word` for a new challenge
+  * `Reveal Word` to give up
+  * `Hint` for clues (limited)
+* Tries and hint count are displayed at the top.
+
+---
+
+### 3. **Rock Paper Scissors**
+
+* Choose Rock, Paper, or Scissors to play against the computer.
+* Use:
+
+  * `Play Again` to replay
+  * `Reset Score` to clear stats
+  * Difficulty dropdown to increase the challenge
+    ![Switch Difficulty](./assets/switch_difficulty_rps.png)
+
+---
+
+### 4. **Guessing Games**
+
+#### A. **You Guess**
+
+* Set a number range, then guess the computer's number.
+* Use:
+
+  * `Reveal number` to give up
+  * `Restart` to start over
+
+#### B. **Computer Guesses**
+
+* Set a range and input your number.
+* Click `Play` to let the computer guess using binary search.
+* Use `Restart` to replay.
+
+---
+
+🎉 **Enjoy the games and challenge your logic & luck!**
+
+
+
+## On Local Machine
 
 ## Installation
 
